@@ -1,47 +1,283 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffe5ef">
 <title>For My Isha ♡</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Georgia,serif;color:#74334f;text-align:center;background:linear-gradient(160deg,#fff8fb,#ffdce9,#fff1f6)}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:25px}
-h1{font-size:clamp(45px,9vw,80px);color:#c44779;margin:20px 0}
-h2{color:#c44779;font-size:35px}
-p{line-height:1.8}
-section{padding:65px 18px;max-width:850px;margin:auto}
-button{border:0;border-radius:30px;padding:14px 24px;background:#c44779;color:white;font-size:16px;cursor:pointer;margin:8px}
-button:hover{background:#9e315f}
-.card{background:#fffafc;border:1px solid #f5bfd4;border-radius:22px;padding:25px;margin:20px auto;box-shadow:0 10px 30px #b64c7615}
-.hearts{font-size:30px;animation:float 2s infinite alternate}
-@keyframes float{to{transform:translateY(-12px)}}
-.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.gallery img{width:100%;border-radius:12px;aspect-ratio:3/4;object-fit:cover;background:#ffe6ef}
-video{width:100%;border-radius:15px;background:#3b1d2c}
-.hidden{display:none}
-#letter,#final{white-space:pre-line;line-height:2}
-footer{padding:35px;color:#a64a70}
+:root {
+  --pink: #d94f88;
+  --deep: #91365f;
+  --light: #fff0f6;
+  --text: #74334f;
+  --glass: rgba(255,255,255,.78);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--text);
+  text-align: center;
+  background:
+    radial-gradient(ellipse at top left, #fff9fc, transparent 55%),
+    linear-gradient(145deg, #fff6fa, #ffdce9 55%, #fff2f7);
+  overflow-x: hidden;
+}
+button { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button {
+  border: 0;
+  border-radius: 30px;
+  padding: 13px 22px;
+  margin: 7px;
+  color: white;
+  background: var(--pink);
+  box-shadow: 0 7px 18px #c4477926;
+  cursor: pointer;
+  transition: transform .25s, background .25s;
+}
+button:hover { transform: translateY(-3px); background: var(--deep); }
+button:focus-visible { outline: 3px solid var(--deep); outline-offset: 4px; }
+
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 20px;
+  position: relative;
+  isolation: isolate;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  width: min(75vw, 480px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ffffff50;
+  filter: blur(10px);
+  z-index: -1;
+}
+.eyebrow { letter-spacing: 3px; font-size: 12px; }
+h1 {
+  color: #c4447c;
+  font-size: clamp(43px, 9vw, 82px);
+  line-height: 1.1;
+  margin: 18px 0;
+  animation: rise .9s both;
+}
+h2 { color: #c4447c; font-size: clamp(28px, 5vw, 39px); }
+p { line-height: 1.8; }
+.hero p { max-width: 560px; }
+.hero-heart { font-size: 35px; animation: heartbeat 1.7s infinite; }
+section { padding: 65px 18px; max-width: 900px; margin: auto; }
+.card {
+  background: var(--glass);
+  border: 1px solid #f5bfd4;
+  border-radius: 25px;
+  padding: clamp(20px, 5vw, 32px);
+  margin: 20px auto;
+  box-shadow: 0 14px 45px #a73b6812;
+  backdrop-filter: blur(8px);
+}
+.small-note { font-size: 13px; opacity: .8; }
+.pill {
+  display: inline-block;
+  border: 1px solid #f1bad0;
+  background: #fff8fb;
+  padding: 7px 13px;
+  border-radius: 25px;
+  font-size: 13px;
+}
+.hidden { display: none !important; }
+.reveal { animation: rise .7s both; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: .8; }
+  90% { opacity: .7; }
+  100% { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+}
+@keyframes sparkle {
+  0%,100% { opacity: .25; transform: scale(.6); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+@keyframes envelopeOpen {
+  from { transform: rotateX(0); }
+  to { transform: rotateX(180deg); }
+}
+#floating-layer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+.floaty {
+  position: absolute;
+  bottom: -50px;
+  animation: floatUp linear forwards;
+  user-select: none;
+}
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  animation: sparkle 2s infinite;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 18px;
+  margin-top: 25px;
+}
+.memory {
+  background: white;
+  padding: 10px 10px 18px;
+  border-radius: 5px;
+  box-shadow: 0 8px 24px #83305219;
+  transform: rotate(var(--tilt));
+  transition: transform .3s, box-shadow .3s;
+  animation: rise .7s both;
+}
+.memory:hover {
+  transform: rotate(0deg) translateY(-5px);
+  box-shadow: 0 14px 28px #83305225;
+}
+.memory img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 3px;
+  background: #ffe6ef;
+}
+.memory p { margin: 12px 2px 0; font-size: 14px; }
+.envelope {
+  position: relative;
+  width: 130px;
+  height: 90px;
+  margin: 15px auto 25px;
+  border-radius: 8px;
+  background: #f5aac8;
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+}
+.letter-paper {
+  background: #fffafc;
+  border: 1px dashed #e9a5bf;
+  border-radius: 18px;
+  padding: 20px;
+  text-align: left;
+  white-space: pre-line;
+  line-height: 2;
+  animation: rise .6s both;
+}
+.gift {
+  display: inline-block;
+  font-size: clamp(95px, 22vw, 145px);
+  cursor: pointer;
+  line-height: 1.3;
+  filter: drop-shadow(0 8px 10px #c4477920);
+  animation: heartbeat 2s infinite;
+  transition: transform .4s;
+}
+.gift:hover { transform: rotate(-8deg) scale(1.08); }
+.gift.open { animation: rise .5s both; }
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 25px 0;
+}
+.time-box {
+  background: #fff8fb;
+  border: 1px solid #f4c1d5;
+  border-radius: 16px;
+  padding: 15px 10px;
+  min-width: 74px;
+}
+.time-box strong { display: block; font-size: 25px; color: var(--pink); }
+.time-box span { font-size: 11px; letter-spacing: 1px; }
+#confetti-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+footer { padding: 35px 15px; color: #a64a70; }
+@media (min-width: 650px) {
+  .gallery { grid-template-columns: repeat(4, minmax(0,1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
 </style>
 </head>
+
 <body>
+<div id="floating-layer" aria-hidden="true"></div>
+<canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
 <header class="hero">
-  <div class="hearts">💗 🌸 💗</div>
-  <p>A LITTLE WORLD MADE JUST FOR YOU</p>
+  <div class="hero-heart">💗 🌸 💗</div>
+  <p class="eyebrow">A LITTLE WORLD MADE JUST FOR YOU</p>
   <h1>Happy Birthday,<br>My Isha ♡</h1>
-  <p>You make ordinary moments feel magical.<br>Today, this little world is all yours.</p>
-  <button onclick="document.querySelector('#letter-section').scrollIntoView({behavior:'smooth'})">Open Your Surprise 💌</button>
+  <p>
+    Out of all the beautiful things in this world,<br>
+    you are one of my favourites.
+  </p>
+  <button onclick="document.querySelector('#letter-section').scrollIntoView({behavior:'smooth'})">
+    Open Your Surprise 💌
+  </button>
+  <span class="pill">Made with love, especially for you</span>
 </header>
+
+<section id="countdown-section">
+  <h2>A Little Countdown 🎂</h2>
+  <p>Counting down to a day as special as you.</p>
+  <div class="card">
+    <div class="countdown" id="countdown" aria-live="polite">
+      <div class="time-box"><strong>--</strong><span>DAYS</span></div>
+      <div class="time-box"><strong>--</strong><span>HOURS</span></div>
+      <div class="time-box"><strong>--</strong><span>MINUTES</span></div>
+      <div class="time-box"><strong>--</strong><span>SECONDS</span></div>
+    </div>
+    <p class="small-note" id="countdown-note">
+      Add Isha's next birthday date in the code to activate the countdown.
+    </p>
+  </div>
+</section>
 
 <section id="letter-section">
   <h2>A Letter From My Heart 💌</h2>
   <div class="card">
-    <div style="font-size:55px">💌</div>
-    <button onclick="document.getElementById('letter').classList.toggle('hidden')">Open Your Letter ♡</button>
-    <p id="letter" class="hidden">My dearest Isha,
+    <div class="envelope" aria-hidden="true">💌</div>
+    <button id="letter-button" onclick="toggleLetter()" aria-expanded="false">
+      Open Your Letter ♡
+    </button>
+    <div id="letter" class="letter-paper hidden">
+My dearest Isha,
 
 Happy Birthday to my favourite person. ❤️
 
@@ -55,53 +291,264 @@ Keep shining, keep dreaming, and always remember that you are special.
 
 Happy Birthday, my Isha. ♡
 
-With all my love 💗</p>
+With all my love 💗
+    </div>
   </div>
 </section>
 
-<section>
+<section id="memories-section">
   <h2>Our Little Memories 📸</h2>
   <p>Every picture holds a little piece of our story.</p>
   <div class="gallery">
-    <div><img src="photo1.jpg" alt="Our memory 1"><p>One of my favourite moments ♡</p></div>
-    <div><img src="photo2.jpg" alt="Our memory 2"><p>A memory to treasure 💗</p></div>
-    <div><img src="photo3.jpg" alt="Our memory 3"><p>You make me smile 🌸</p></div>
-    <div><img src="photo4.jpg" alt="Our memory 4"><p>More memories ahead ✨</p></div>
+    <div class="memory" style="--tilt:-2deg">
+      <img src="photo1.jpg" alt="Our memory 1" loading="lazy">
+      <p>One of my favourite moments ♡</p>
+    </div>
+    <div class="memory" style="--tilt:2deg">
+      <img src="photo2.jpg" alt="Our memory 2" loading="lazy">
+      <p>A memory to treasure 💗</p>
+    </div>
+    <div class="memory" style="--tilt:-1deg">
+      <img src="photo3.jpg" alt="Our memory 3" loading="lazy">
+      <p>You make me smile 🌸</p>
+    </div>
+    <div class="memory" style="--tilt:2deg">
+      <img src="photo4.jpg" alt="Our memory 4" loading="lazy">
+      <p>More memories ahead ✨</p>
+    </div>
   </div>
-  <p>Replace these pictures with your own photos.</p>
 </section>
 
-<section>
+<section id="video-section">
   <h2>A Video Just For You 🎬</h2>
   <div class="card">
     <p>I made something special for you, Isha.<br>Press play, birthday girl. ❤️</p>
-    <video controls playsinline preload="metadata">
+    <video controls playsinline preload="metadata"
+      style="width:100%;max-width:650px;border-radius:15px;background:#3b1d2c">
       <source src="isha-video.mp4" type="video/mp4">
       Your browser cannot play this video.
     </video>
-    <p>Made with love, especially for you. ♡</p>
+    <p class="small-note">Your video will appear here once you upload it.</p>
+  </div>
+</section>
+
+<section id="gift-section">
+  <h2>Your Virtual Gift 🎁</h2>
+  <div class="card">
+    <p>There's a little surprise waiting just for you.</p>
+    <button id="gift-button" onclick="openGift()">Tap to open your gift 💗</button>
+    <div>
+      <span id="gift-emoji" class="gift" role="button" tabindex="0"
+        aria-label="Open the birthday gift" onclick="openGift()">🎁</span>
+    </div>
+    <div id="gift-message" class="hidden reveal">
+      <h2>Surprise, Isha! 💝</h2>
+      <p>
+        My favourite gift is having you in my life.
+
+        I hope this new year brings you beautiful dreams, happy moments,
+        and a thousand reasons to smile.
+
+        No gift could ever say everything I want you to know,
+        but I hope this little surprise reminds you how special you are.
+
+        Happy Birthday, my Isha! ❤️
+
+        Sending you the biggest virtual hug. ♡
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="why-section">
+  <h2>A Little Secret ❤️</h2>
+  <div class="card">
+    <p>There are some things I never want you to forget.</p>
+    <button onclick="showReasons()">Why I Love You 💗</button>
+    <div id="reasons" class="hidden reveal">
+      <p>🌸 Your smile makes ordinary moments special.</p>
+      <p>💗 You bring warmth into the little things.</p>
+      <p>✨ You deserve every beautiful thing life has to offer.</p>
+      <p>💕 And because being you is already wonderful.</p>
+      <p class="small-note">A little reminder, whenever you need one. ♡</p>
+    </div>
   </div>
 </section>
 
 <section>
-  <h2>Your Virtual Gift 🎁</h2>
-  <div class="card">
-    <div style="font-size:75px">🎁</div>
-    <button onclick="document.getElementById('final').classList.toggle('hidden')">Open Your Gift 💗</button>
-    <p id="final" class="hidden">Surprise, Isha! 💝
-
-My favourite gift is having you in my life.
-
-I hope this new year brings you beautiful dreams, happy moments, and a thousand reasons to smile.
-
-No gift could ever say everything I want you to know, but I hope this little surprise reminds you how special you are.
-
-Happy Birthday, my Isha! ❤️
-
-Sending you the biggest virtual hug. ♡</p>
-  </div>
+  <h2>One Last Little Surprise ✨</h2>
+  <p>Because your birthday deserves a little extra magic.</p>
+  <button onclick="celebrate()">Make a Wish, Isha! 🎉</button>
 </section>
 
-<footer>Made with love, just for Isha ♡<br>🌸 Happy Birthday 🌸</footer>
+<footer>
+  Made with love, just for Isha ♡<br>
+  🌸 Happy Birthday 🌸
+</footer>
+
+<script>
+/* CUSTOMIZE THIS: enter Isha's next birthday date as YYYY-MM-DD.
+   Example format: "2026-11-15"
+   Leave empty until you know the date. */
+const BIRTHDAY_DATE = "";
+
+const floatingLayer = document.getElementById("floating-layer");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function createFloating() {
+  if (reducedMotion || !floatingLayer) return;
+  const item = document.createElement("span");
+  item.className = "floaty";
+  item.textContent = ["💗", "♡", "💕", "✨", "🌸"][Math.floor(Math.random() * 5)];
+  item.style.left = Math.random() * 100 + "vw";
+  item.style.fontSize = (14 + Math.random() * 18) + "px";
+  item.style.animationDuration = (7 + Math.random() * 7) + "s";
+  floatingLayer.appendChild(item);
+  setTimeout(() => item.remove(), 15000);
+}
+if (!reducedMotion) setInterval(createFloating, 850);
+
+function toggleLetter() {
+  const letter = document.getElementById("letter");
+  const button = document.getElementById("letter-button");
+  const opening = letter.classList.contains("hidden");
+  letter.classList.toggle("hidden");
+  button.textContent = opening ? "Close Your Letter 💌" : "Open Your Letter ♡";
+  button.setAttribute("aria-expanded", String(opening));
+  if (opening) letter.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+let giftOpened = false;
+function openGift() {
+  const message = document.getElementById("gift-message");
+  const emoji = document.getElementById("gift-emoji");
+  if (!giftOpened) {
+    giftOpened = true;
+    emoji.textContent = "💝";
+    emoji.classList.add("open");
+    message.classList.remove("hidden");
+    document.getElementById("gift-button").textContent = "Your gift is open 💗";
+    celebrate();
+  } else {
+    message.classList.toggle("hidden");
+  }
+}
+document.getElementById("gift-emoji").addEventListener("keydown", event => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openGift();
+  }
+});
+
+function showReasons() {
+  const reasons = document.getElementById("reasons");
+  reasons.classList.toggle("hidden");
+  if (!reasons.classList.contains("hidden")) {
+    reasons.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    celebrate();
+  }
+}
+
+function updateCountdown() {
+  const display = document.getElementById("countdown");
+  const note = document.getElementById("countdown-note");
+
+  if (!BIRTHDAY_DATE || !/^\d{4}-\d{2}-\d{2}$/.test(BIRTHDAY_DATE)) {
+    note.textContent = "To activate: edit BIRTHDAY_DATE in the code and enter the date as YYYY-MM-DD.";
+    return;
+  }
+
+  const parts = BIRTHDAY_DATE.split("-").map(Number);
+  const [year, month, day] = parts;
+  const now = new Date();
+  let target = new Date(year, month - 1, day, 0, 0, 0);
+
+  if (target.getFullYear() !== year || target.getMonth() !== month - 1 ||
+      target.getDate() !== day) {
+    note.textContent = "Please check the birthday date in the code.";
+    return;
+  }
+
+  if (target.getTime() < now.getTime()) {
+    target = new Date(now.getFullYear(), month - 1, day, 0, 0, 0);
+    if (target.getTime() < now.getTime()) target.setFullYear(now.getFullYear() + 1);
+  }
+
+  const remaining = Math.max(0, target.getTime() - now.getTime());
+  const days = Math.floor(remaining / 86400000);
+  const hours = Math.floor((remaining % 86400000) / 3600000);
+  const minutes = Math.floor((remaining % 3600000) / 60000);
+  const seconds = Math.floor((remaining % 60000) / 1000);
+  const values = [days, hours, minutes, seconds];
+
+  display.innerHTML = values.map((value, index) => {
+    const labels = ["DAYS", "HOURS", "MINUTES", "SECONDS"];
+    return '<div class="time-box"><strong>' + value +
+      '</strong><span>' + labels[index] + '</span></div>';
+  }).join("");
+
+  note.textContent = "Until another beautiful year of you. ♡";
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* Lightweight confetti: no library or paid service needed. */
+const canvas = document.getElementById("confetti-canvas");
+const ctx = canvas.getContext("2d");
+let pieces = [];
+let animationFrame = null;
+
+function resizeCanvas() {
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = window.innerWidth * ratio;
+  canvas.height = window.innerHeight * ratio;
+  canvas.style.width = window.innerWidth + "px";
+  canvas.style.height = window.innerHeight + "px";
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+function celebrate() {
+  if (reducedMotion) return;
+  const width = window.innerWidth;
+  const colors = ["#f06ca5", "#ffd166", "#c8a2ff", "#ff8fab", "#ffffff", "#f6a6c1"];
+  for (let i = 0; i < 130; i++) {
+    pieces.push({
+      x: Math.random() * width,
+      y: -20 - Math.random() * window.innerHeight * .5,
+      size: 4 + Math.random() * 7,
+      speed: 2 + Math.random() * 4,
+      drift: (Math.random() - .5) * 2.5,
+      spin: Math.random() * 6,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    });
+  }
+  if (!animationFrame) drawConfetti();
+}
+
+function drawConfetti() {
+  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  pieces.forEach(piece => {
+    piece.y += piece.speed;
+    piece.x += piece.drift;
+    piece.spin += .08;
+    ctx.save();
+    ctx.translate(piece.x, piece.y);
+    ctx.rotate(piece.spin);
+    ctx.fillStyle = piece.color;
+    ctx.fillRect(-piece.size / 2, -piece.size / 2, piece.size, piece.size * .65);
+    ctx.restore();
+  });
+  pieces = pieces.filter(piece => piece.y < window.innerHeight + 30);
+  if (pieces.length) {
+    animationFrame = requestAnimationFrame(drawConfetti);
+  } else {
+    cancelAnimationFrame(animationFrame);
+    animationFrame = null;
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  }
+}
+</script>
 </body>
 </html>
