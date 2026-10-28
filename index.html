@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For My Isha ♡</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,serif;color:#74334f;text-align:center;background:linear-gradient(160deg,#fff8fb,#ffdce9,#fff1f6)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:25px}
+h1{font-size:clamp(45px,9vw,80px);color:#c44779;margin:20px 0}
+h2{color:#c44779;font-size:35px}
+p{line-height:1.8}
+section{padding:65px 18px;max-width:850px;margin:auto}
+button{border:0;border-radius:30px;padding:14px 24px;background:#c44779;color:white;font-size:16px;cursor:pointer;margin:8px}
+button:hover{background:#9e315f}
+.card{background:#fffafc;border:1px solid #f5bfd4;border-radius:22px;padding:25px;margin:20px auto;box-shadow:0 10px 30px #b64c7615}
+.hearts{font-size:30px;animation:float 2s infinite alternate}
+@keyframes float{to{transform:translateY(-12px)}}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gallery img{width:100%;border-radius:12px;aspect-ratio:3/4;object-fit:cover;background:#ffe6ef}
+video{width:100%;border-radius:15px;background:#3b1d2c}
+.hidden{display:none}
+#letter,#final{white-space:pre-line;line-height:2}
+footer{padding:35px;color:#a64a70}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hearts">💗 🌸 💗</div>
+  <p>A LITTLE WORLD MADE JUST FOR YOU</p>
+  <h1>Happy Birthday,<br>My Isha ♡</h1>
+  <p>You make ordinary moments feel magical.<br>Today, this little world is all yours.</p>
+  <button onclick="document.querySelector('#letter-section').scrollIntoView({behavior:'smooth'})">Open Your Surprise 💌</button>
+</header>
+
+<section id="letter-section">
+  <h2>A Letter From My Heart 💌</h2>
+  <div class="card">
+    <div style="font-size:55px">💌</div>
+    <button onclick="document.getElementById('letter').classList.toggle('hidden')">Open Your Letter ♡</button>
+    <p id="letter" class="hidden">My dearest Isha,
+
+Happy Birthday to my favourite person. ❤️
+
+I hope your life is filled with beautiful moments, endless smiles, and all the happiness you deserve.
+
+If I could give you one thing today, it would be the chance to see yourself through my eyes. Then you would understand how special you are to me.
+
+This little website is a small gift made with you in mind. I hope it makes you smile today and whenever you visit it.
+
+Keep shining, keep dreaming, and always remember that you are special.
+
+Happy Birthday, my Isha. ♡
+
+With all my love 💗</p>
+  </div>
+</section>
+
+<section>
+  <h2>Our Little Memories 📸</h2>
+  <p>Every picture holds a little piece of our story.</p>
+  <div class="gallery">
+    <div><img src="photo1.jpg" alt="Our memory 1"><p>One of my favourite moments ♡</p></div>
+    <div><img src="photo2.jpg" alt="Our memory 2"><p>A memory to treasure 💗</p></div>
+    <div><img src="photo3.jpg" alt="Our memory 3"><p>You make me smile 🌸</p></div>
+    <div><img src="photo4.jpg" alt="Our memory 4"><p>More memories ahead ✨</p></div>
+  </div>
+  <p>Replace these pictures with your own photos.</p>
+</section>
+
+<section>
+  <h2>A Video Just For You 🎬</h2>
+  <div class="card">
+    <p>I made something special for you, Isha.<br>Press play, birthday girl. ❤️</p>
+    <video controls playsinline preload="metadata">
+      <source src="isha-video.mp4" type="video/mp4">
+      Your browser cannot play this video.
+    </video>
+    <p>Made with love, especially for you. ♡</p>
+  </div>
+</section>
+
+<section>
+  <h2>Your Virtual Gift 🎁</h2>
+  <div class="card">
+    <div style="font-size:75px">🎁</div>
+    <button onclick="document.getElementById('final').classList.toggle('hidden')">Open Your Gift 💗</button>
+    <p id="final" class="hidden">Surprise, Isha! 💝
+
+My favourite gift is having you in my life.
+
+I hope this new year brings you beautiful dreams, happy moments, and a thousand reasons to smile.
+
+No gift could ever say everything I want you to know, but I hope this little surprise reminds you how special you are.
+
+Happy Birthday, my Isha! ❤️
+
+Sending you the biggest virtual hug. ♡</p>
+  </div>
+</section>
+
+<footer>Made with love, just for Isha ♡<br>🌸 Happy Birthday 🌸</footer>
+</body>
+</html>
